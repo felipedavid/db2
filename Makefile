@@ -13,4 +13,4 @@ start:
 stop: 
 	sudo docker stop pgadmin_db_class postgres_db_class 
 
-.PHONY: create_containers remove_containers
+.PHONY: create_containers remove_containers start stop
