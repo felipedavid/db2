@@ -1,16 +1,16 @@
 INSERT INTO funcionario VALUES 
-	(DEFAULT, 'mario',  'm', '2000-12-11', 2500, DEFAULT),
-	(DEFAULT, 'lilian', 'f', '2000-11-11', 2200, DEFAULT),
-	(DEFAULT, 'vitor',  'm', '2000-10-11', 2900, DEFAULT),
-	(DEFAULT, 'maria',  'f', '2000-01-12', 2300, DEFAULT),
-	(DEFAULT, 'marcos', 'm', '1998-11-11', 2000, DEFAULT);
+	(DEFAULT, 'mario',  'm', '2000-12-11', 2500, 4),
+	(DEFAULT, 'lilian', 'f', '2000-11-11', 2200, 5),
+	(DEFAULT, 'vitor',  'm', '2000-10-11', 2900, 4),
+	(DEFAULT, 'maria',  'f', '2000-01-12', 2300, 4),
+	(DEFAULT, 'marcos', 'm', '1998-11-11', 2000, 2);
 
 INSERT INTO departamento VALUES
-	(DEFAULT, 'Departamento 1', 1),
-	(DEFAULT, 'Departamento 2', 3),
-	(DEFAULT, 'Departamento 3', 2),
-	(DEFAULT, 'Departamento 4', 2),
-	(DEFAULT, 'Departamento 5', 1);
+	(DEFAULT, 'MUI', 'Departamento 1', 1),
+	(DEFAULT, 'TA', 'Departamento 2', 3),
+	(DEFAULT, 'GH', 'Departamento 3', 2),
+	(DEFAULT, 'GH2', 'Departamento 4', 2),
+	(DEFAULT, 'NOIDEA', 'Departamento 5', 1);
 
 INSERT INTO projeto VALUES
 	(DEFAULT, 'Projeto 1', 'projeto X...', 3, 1, '1999-05-05', '2000-05-05'),
