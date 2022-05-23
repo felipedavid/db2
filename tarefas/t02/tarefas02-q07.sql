@@ -1,0 +1,5 @@
+
+
+CREATE TRIGGER add_milhas AFTER
+INSERT cliente_voo AS
+UPDATE
