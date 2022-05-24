@@ -9,9 +9,9 @@ $$ LANGUAGE plpgsql;
 CREATE FUNCTION delete_piloto()
 RETURNS TRIGGER AS $$
 BEGIN
-    DELETE FROM piloto WHERE condigo = old.piloto_id;
+    DELETE FROM piloto WHERE codigo = old.piloto_id;
     RETURN NEW;
-END;
+END
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER deletar_passageiros
@@ -20,6 +20,6 @@ FOR EACH ROW
 EXECUTE FUNCTION delete_passageiros();
 
 CREATE TRIGGER deletar_piloto
-AFTER DELETE ON voo
+BEFORE DELETE ON voo
 FOR EACH ROW
 EXECUTE FUNCTION delete_piloto();
