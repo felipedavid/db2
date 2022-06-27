@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model atividade {
+  codigo     Int       @id @default(autoincrement())
+  descricao  String?   @db.VarChar(250)
+  codprojeto Int?
+  datainicio DateTime? @db.Date
+  datafim    DateTime? @db.Date
+  projeto    projeto?  @relation(fields: [codprojeto], references: [codigo])
+}
+
+model departamento {
+  codigo                                           Int           @id @default(autoincrement())
+  sigla                                            String?       @db.VarChar(10)
+  descricao                                        String?       @db.VarChar(50)
+  codgerente                                       Int?
+  funcionario_departamento_codgerenteTofuncionario funcionario?  @relation("departamento_codgerenteTofuncionario", fields: [codgerente], references: [codigo])
+  funcionario_departamentoTofuncionario_coddepto   funcionario[] @relation("departamentoTofuncionario_coddepto")
+  projeto                                          projeto[]
+}
+
+model funcionario {
+  codigo                                            Int            @id @default(autoincrement())
+  nome                                              String?        @db.VarChar(50)
+  sexo                                              String?        @db.Char(1)
+  dtnasc                                            DateTime?      @db.Date
+  salario                                           Decimal?       @db.Decimal(10, 2)
+  codsupervisor                                     Int?
+  coddepto                                          Int?
+  departamento_departamentoTofuncionario_coddepto   departamento?  @relation("departamentoTofuncionario_coddepto", fields: [coddepto], references: [codigo], map: "funcdeptofk")
+  funcionario                                       funcionario?   @relation("funcionarioTofuncionario_codsupervisor", fields: [codsupervisor], references: [codigo])
+  departamento_departamento_codgerenteTofuncionario departamento[] @relation("departamento_codgerenteTofuncionario")
+  other_funcionario                                 funcionario[]  @relation("funcionarioTofuncionario_codsupervisor")
+  projeto                                           projeto[]
+}
+
+model projeto {
+  codigo         Int           @id @default(autoincrement())
+  nome           String?       @db.VarChar(50)
+  descricao      String?       @db.VarChar(250)
+  codresponsavel Int?
+  coddepto       Int?
+  datainicio     DateTime?     @db.Date
+  datafim        DateTime?     @db.Date
+  departamento   departamento? @relation(fields: [coddepto], references: [codigo])
+  funcionario    funcionario?  @relation(fields: [codresponsavel], references: [codigo])
+  atividade      atividade[]
+}
