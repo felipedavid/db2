@@ -5,3 +5,4 @@
 ## Tarefas
 - [Tarefa 1](tarefas/t01/tarefa01.md)
 - [Tarefa 2](tarefas/t02/tarefa02.md)
+- [Tarefa 3](tarefas/t03/tarefa03.md)
